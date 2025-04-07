@@ -10,4 +10,5 @@ class EventAdmin(admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
     list_display = [ 'place', 'ordinal_number']
     list_editable = ['ordinal_number', ]
+    search_fields = ['place', ]
 

@@ -3,8 +3,8 @@ from django.db import models
 
 class Image(models.Model):
     place = models.ForeignKey('Place', on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='images/')
-    ordinal_number = models.IntegerField(unique=True)
+    image = models.ImageField()
+    ordinal_number = models.IntegerField()
 
     def __str__(self):
         return f'{self.place} - {self.ordinal_number}'
