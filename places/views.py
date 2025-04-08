@@ -1,6 +1,8 @@
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
 from .models import Place
 
 
@@ -19,7 +21,7 @@ def show_index(request):
             "properties": {
                 "title": place.title,
                 "placeId": index,
-                "detailsUrl": "https://raw.githubusercontent.com/devmanorg/where-to-go-frontend/refs/heads/master/places/moscow_legends.json"
+                "detailsUrl": reverse('place', args=[place.id])
             }
         }
 
