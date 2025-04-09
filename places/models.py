@@ -4,7 +4,7 @@ from django.db import models
 class Image(models.Model):
     place = models.ForeignKey('Place', on_delete=models.CASCADE, related_name='images')
     image = models.ImageField()
-    ordinal_number = models.IntegerField()
+    ordinal_number = models.PositiveIntegerField(default=0, blank=False, null=False, )
 
     class Meta:
         ordering = ["-ordinal_number"]
