@@ -6,6 +6,9 @@ class Image(models.Model):
     image = models.ImageField()
     ordinal_number = models.IntegerField()
 
+    class Meta:
+        ordering = ["-ordinal_number"]
+
     def __str__(self):
         return f'{self.place} - {self.ordinal_number}'
 

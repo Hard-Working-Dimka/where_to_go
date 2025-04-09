@@ -35,8 +35,9 @@ def show_index(request):
 
     return render(request, 'index.html', context=data)
 
+
 def show_place(request, id):
-    place = get_object_or_404(Place,pk=id)
+    place = get_object_or_404(Place, pk=id)
     images = place.images.all()
 
     urls = []
@@ -46,6 +47,5 @@ def show_place(request, id):
 
     place_dict["coordinates"] = [place.lng, place.lat]
     place_dict["imgs"] = urls
-
 
     return JsonResponse(place_dict, safe=False, json_dumps_params={'ensure_ascii': False})
