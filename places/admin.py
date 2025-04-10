@@ -28,8 +28,8 @@ class EventAdmin(SortableAdminBase, admin.ModelAdmin):
     ]
 
 
-# @admin.register(Image)
-# class ImageAdmin(admin.ModelAdmin):
-#     list_display = ['place', 'ordinal_number', ]
-#     list_editable = ['ordinal_number', ]
-#     search_fields = ['place', ]
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ['place', 'ordinal_number', ]
+    list_editable = ['ordinal_number', ]
+    search_fields = ['place', ]

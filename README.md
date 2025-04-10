@@ -82,6 +82,7 @@ python manage.py runserver
 Данные в картах взяты из [репозитория](https://github.com/devmanorg/where-to-go-places).
 
 ДОБАВИТЬ ДЕМКУ САЙТА!!!!
+ДОБАВИТЬ JSON!!!
 ## Цель проекта
 
 Код написан в образовательных целях.

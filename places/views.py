@@ -11,7 +11,6 @@ def show_index(request):
     features = []
 
     for place in places:
-        index = + 1
         feature = {
             "type": "Feature",
             "geometry": {
@@ -20,7 +19,7 @@ def show_index(request):
             },
             "properties": {
                 "title": place.title,
-                "placeId": index,
+                "placeId": place.id,
                 "detailsUrl": reverse('place', args=[place.id])
             }
         }

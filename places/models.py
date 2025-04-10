@@ -8,7 +8,7 @@ class Image(models.Model):
     ordinal_number = models.PositiveIntegerField(default=0, blank=False, null=False, )
 
     class Meta:
-        ordering = ["-ordinal_number"]
+        ordering = ["ordinal_number"]
 
     def __str__(self):
         return f'{self.place} - {self.ordinal_number}'
@@ -20,6 +20,9 @@ class Place(models.Model):
     description_long = HTMLField()
     lng = models.FloatField()
     lat = models.FloatField()
+
+    class Meta:
+        unique_together = ['title', 'lng', 'lat']
 
     def __str__(self):
         return self.title
