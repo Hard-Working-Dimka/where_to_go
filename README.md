@@ -72,8 +72,7 @@ SECRET_KEY =
 DEBUG = True
 ALLOWED_HOSTS = *
 STATIC_URL = /static/'
-STATICFILES_DIRS = static/
-STATIC_ROOT = media/
+STATIC_ROOT = static/
 MEDIA_URL = /media/
 MEDIA_ROOT = media/
 ```
