@@ -26,10 +26,3 @@ class EventAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline,
     ]
-
-
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ['place', 'ordinal_number', ]
-    list_editable = ['ordinal_number', ]
-    search_fields = ['place', ]
