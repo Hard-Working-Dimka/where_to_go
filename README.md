@@ -6,7 +6,7 @@
 
 
 ## Особенности
-Благодаря удобной админ-панели администратор может быстро указывать данные о локации (включая загрузку фотографий), а так эе опубликовывать их на карту.
+Благодаря удобной админ-панели администратор может быстро указывать данные о локации (включая загрузку фотографий), а так же опубликовывать их на карту.
 
 Возможность редактирования существующих записей.
 
@@ -35,6 +35,13 @@
     }
 }
 ```
+Для быстрой загрузки данных в БД воспользуйтесь командой:
+
+```bash
+python manage.py load_place <lint_to_json>
+```
+
+Где `<lint_to_json>` ссылка на исходный код JSON файла, пример которого представлен выше. Пример ссылки на JSON [файл](https://raw.githubusercontent.com/devmanorg/where-to-go-places/refs/heads/master/places/%D0%90%D1%80%D1%82-%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D1%81%D1%82%D0%B2%D0%BE%20%C2%AB%D0%91%D1%83%D0%BD%D0%BA%D0%B5%D1%80%20703%C2%BB.json). Если используете GitHub: выберите файл, откройте его на отдельной странице и нажмите кнопку Raw. Так вы получите ссылку на исходный код файла.
 ## Требования
 
 - Python 3.7+
@@ -76,6 +83,13 @@ STATIC_ROOT = static/
 MEDIA_URL = /media/
 MEDIA_ROOT = media/
 ```
+Ниже приведены ссылки на официальную документацию Django по необходимым переменным окружения:
+* [DEBUG](https://docs.djangoproject.com/en/5.2/ref/settings/#debug)
+* [ALLOWED_HOSTS](https://docs.djangoproject.com/en/5.2/ref/settings/#allowed-hosts)
+* [STATIC_URL](https://docs.djangoproject.com/en/5.2/ref/settings/#static-url)
+* [STATIC_ROOT](https://docs.djangoproject.com/en/5.2/ref/settings/#static-root)
+* [MEDIA_URL](https://docs.djangoproject.com/en/5.2/ref/settings/#media-url)
+* [MEDIA_ROOT](https://docs.djangoproject.com/en/5.2/ref/settings/#media-root)
 
 5. Примените миграции базы данных:
 
