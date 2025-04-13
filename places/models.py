@@ -17,7 +17,7 @@ class Image(models.Model):
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=150)
     description_short = models.TextField()
     description_long = HTMLField()
     lng = models.FloatField()
