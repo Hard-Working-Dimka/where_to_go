@@ -8,7 +8,7 @@ class Image(models.Model):
     ordinal_number = models.PositiveIntegerField(default=0, blank=False, null=False, db_index=True)
 
     class Meta:
-        ordering = ["ordinal_number"]
+        ordering = ['ordinal_number']
         verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
 
