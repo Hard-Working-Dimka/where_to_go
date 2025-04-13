@@ -9,6 +9,8 @@ class Image(models.Model):
 
     class Meta:
         ordering = ["ordinal_number"]
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии'
 
     def __str__(self):
         return f'{self.place} - {self.ordinal_number}'
@@ -23,6 +25,8 @@ class Place(models.Model):
 
     class Meta:
         unique_together = ['title', 'lng', 'lat']
+        verbose_name = 'Место'
+        verbose_name_plural = 'Места'
 
     def __str__(self):
         return self.title
