@@ -18,8 +18,8 @@ class Image(models.Model):
 
 class Place(models.Model):
     title = models.CharField(max_length=150)
-    description_short = models.TextField(blank=True)
-    description_long = HTMLField(blank=True)
+    short_description = models.TextField(blank=True)
+    long_description = HTMLField(blank=True)
     lng = models.FloatField()
     lat = models.FloatField()
 

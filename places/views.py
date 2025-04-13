@@ -42,9 +42,11 @@ def show_place(request, id):
     urls = []
     for image in images:
         urls.append(image.image.url)
-    place_dict = model_to_dict(place, fields=["title", "description_short", "description_long"])
+    place_info = model_to_dict(place, fields=["title",])
 
-    place_dict["coordinates"] = [place.lng, place.lat]
-    place_dict["imgs"] = urls
+    place_info["description_short"] = place.short_description
+    place_info["description_long"] =place.long_description
+    place_info["coordinates"] = [place.lng, place.lat]
+    place_info["imgs"] = urls
 
-    return JsonResponse(place_dict, safe=False, json_dumps_params={'ensure_ascii': False})
+    return JsonResponse(place_info, safe=False, json_dumps_params={'ensure_ascii': False})

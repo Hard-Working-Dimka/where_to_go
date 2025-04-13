@@ -11,8 +11,8 @@ def add_json_to_db(url):
     response = response.json()
     place = Place.objects.get_or_create(
         title=response['title'],
-        description_short=response['description_short'],
-        description_long=response['description_long'],
+        short_description=response['description_short'],
+        long_description=response['description_long'],
         lng=response['coordinates']['lng'],
         lat=response['coordinates']['lat'],
     )[0]
