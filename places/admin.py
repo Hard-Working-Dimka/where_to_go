@@ -14,15 +14,10 @@ class ImageInline(SortableStackedInline):
     extra = 10
 
     def place_image(self, obj):
-        return format_html(
-            '<img src="{url}" width="{width}" height={height} style="max-width:{max_width}px; max-height:{max_height}px" />'.format(
-                url=obj.image.url,
-                width=obj.image.width,
-                height=obj.image.height,
-                max_width=IMAGE_MAX_WIDTH,
-                max_height=IMAGE_MAX_HEIGHT
-            )
-        )
+        return format_html('<img src="{url}" style="max-width:{max_width}px; max-height:{max_height}px" />',
+                           url=obj.image.url,
+                           max_width=IMAGE_MAX_WIDTH,
+                           max_height=IMAGE_MAX_HEIGHT, )
 
 
 @admin.register(Place)
