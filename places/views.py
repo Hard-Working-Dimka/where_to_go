@@ -40,13 +40,11 @@ def show_place(request, id):
 
     images = place.images.all()
 
-    urls = []
-    for image in images:
-        urls.append(image.image.url)
-    place_info = model_to_dict(place, fields=['title',])
+    urls = [image.image.url for image in images]
+    place_info = model_to_dict(place, fields=['title', ])
 
     place_info['description_short'] = place.short_description
-    place_info['description_long'] =place.long_description
+    place_info['description_long'] = place.long_description
     place_info['coordinates'] = [place.lng, place.lat]
     place_info['imgs'] = urls
 
