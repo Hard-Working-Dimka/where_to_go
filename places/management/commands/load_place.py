@@ -1,8 +1,13 @@
+import time
+
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
 
 from places.models import Place, Image
 import requests
+import sys
+
+SLEEP_TIME = 90
 
 
 def add_json_to_db(url):
@@ -17,8 +22,16 @@ def add_json_to_db(url):
     )
 
     for number_of_image, image in enumerate(response['imgs'], start=0):
-        image_response = requests.get(image)
-        image_response.raise_for_status()
+        try:
+            image_response = requests.get(image)
+            image_response.raise_for_status()
+        except requests.exceptions.HTTPError:
+            sys.stderr.write(f'Произошла ошибка при загрузке фотографии : {image}\n')
+            continue
+        except requests.exceptions.ConnectionError:
+            sys.stderr.write('Произошла ошибка с подключением к сети!\n')
+            time.sleep(SLEEP_TIME)
+            continue
 
         place.images.create(
             image=ContentFile(image_response.content, f'{place.title}_{number_of_image}.jpg'),
