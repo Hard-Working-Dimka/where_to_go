@@ -3,9 +3,10 @@ from tinymce.models import HTMLField
 
 
 class Image(models.Model):
-    place = models.ForeignKey('Place', on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField()
-    ordinal_number = models.PositiveIntegerField(default=0, blank=False, null=False, db_index=True)
+    place = models.ForeignKey('Place', on_delete=models.CASCADE, related_name='images', verbose_name='место')
+    image = models.ImageField(verbose_name='фотография')
+    ordinal_number = models.PositiveIntegerField(default=0, blank=False, null=False, db_index=True,
+                                                 verbose_name='порядковый номер')
 
     class Meta:
         ordering = ['ordinal_number']
@@ -17,11 +18,11 @@ class Image(models.Model):
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=150)
-    short_description = models.TextField(blank=True)
-    long_description = HTMLField(blank=True)
-    lng = models.FloatField()
-    lat = models.FloatField()
+    title = models.CharField(max_length=150, verbose_name='название')
+    short_description = models.TextField(blank=True, verbose_name='краткое описание')
+    long_description = HTMLField(blank=True, verbose_name='полное описание')
+    lng = models.FloatField(verbose_name='долгота')
+    lat = models.FloatField(verbose_name='широта')
 
     class Meta:
         unique_together = ['title', 'lng', 'lat']
