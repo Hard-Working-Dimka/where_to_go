@@ -13,8 +13,7 @@ def add_json_to_db(url):
         title=response['title'],
         short_description=response['description_short'],
         long_description=response['description_long'],
-        lng=response['coordinates']['lng'],
-        lat=response['coordinates']['lat'],
+        defaults={'lng': response['coordinates']['lng'], 'lat': response['coordinates']['lat']}
     )
 
     for number_of_image, image in enumerate(response['imgs'], start=0):
