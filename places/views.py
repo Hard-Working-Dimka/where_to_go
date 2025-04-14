@@ -36,7 +36,7 @@ def show_index(request):
 
 
 def show_place(request, id):
-    place = get_object_or_404(Place.objects.select_related(), pk=id)
+    place = get_object_or_404(Place.objects.prefetch_related('images'), pk=id)
 
     images = place.images.all()
     urls = [image.image.url for image in images]
