@@ -9,13 +9,13 @@ def add_json_to_db(url):
     response = requests.get(url)
     response.raise_for_status()
     response = response.json()
-    place = Place.objects.get_or_create(
+    place, _ = Place.objects.get_or_create(
         title=response['title'],
         short_description=response['description_short'],
         long_description=response['description_long'],
         lng=response['coordinates']['lng'],
         lat=response['coordinates']['lat'],
-    )[0]
+    )
 
     for number_of_image, image in enumerate(response['imgs'], start=0):
         image_response = requests.get(image)
