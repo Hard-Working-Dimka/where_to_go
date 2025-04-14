@@ -39,13 +39,13 @@ def show_place(request, id):
     place = get_object_or_404(Place.objects.select_related(), pk=id)
 
     images = place.images.all()
-
     urls = [image.image.url for image in images]
-    place_info = model_to_dict(place, fields=['title', ])
-
-    place_info['description_short'] = place.short_description
-    place_info['description_long'] = place.long_description
-    place_info['coordinates'] = [place.lng, place.lat]
-    place_info['imgs'] = urls
+    place_info = {
+        'title': place.title,
+        'description_short': place.short_description,
+        'description_long': place.long_description,
+        'coordinates': [place.lng, place.lat],
+        'imgs': urls,
+    }
 
     return JsonResponse(place_info, safe=False, json_dumps_params={'ensure_ascii': False})
